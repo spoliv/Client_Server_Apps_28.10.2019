@@ -4,15 +4,18 @@
 
 import locale
 
-
+a = ['сетевое программирование', 'сокет', 'декоратор']
 with open('test_file.txt', 'w', encoding='utf-8') as f_n:
-    f_n.write(
-        'сетевое программирование' +
-        '\n' +
-        'сокет' +
-        '\n' +
-        'декоратор' +
-        '\n')
+    # f_n.write(
+    #     'сетевое программирование' +
+    #     '\n' +
+    #     'сокет' +
+    #     '\n' +
+    #     'декоратор' +
+    #     '\n')
+    a = map(lambda x: x + '\n', a)
+    f_n.writelines(a)
+
 
 print(locale.getpreferredencoding())
 
