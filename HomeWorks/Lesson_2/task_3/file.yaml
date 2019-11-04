@@ -1,0 +1,9 @@
+num: 5
+prices:
+  price_in_dol: 5$
+  price_in_euro: 7€
+  price_in_pound: 2£
+products:
+- bread
+- milk
+- meat
