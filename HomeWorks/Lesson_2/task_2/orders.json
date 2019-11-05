@@ -1,0 +1,25 @@
+{
+    "orders": [
+        {
+            "item": "Paper",
+            "quantity": 5,
+            "price": 140,
+            "buyer": "Smith",
+            "date": "24.09.2018"
+        },
+        {
+            "item": "Milk",
+            "quantity": 6,
+            "price": 260,
+            "buyer": "Toren",
+            "date": "23.02.2019"
+        },
+        {
+            "item": "Meat",
+            "quantity": 4,
+            "price": 750,
+            "buyer": "Ivanov",
+            "date": "01.01.2010"
+        }
+    ]
+}
