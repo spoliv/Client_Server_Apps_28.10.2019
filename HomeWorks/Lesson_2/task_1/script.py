@@ -24,66 +24,36 @@ def get_data(n):
     os_name_list = []
     os_code_list = []
     os_type_list = []
-    headers_list = []
     main_data = []
 
-    pattern_1 = '^Изготовитель системы'
-    pattern_2 = '^Название ОС'
-    pattern_3 = '^Код продукта'
-    pattern_4 = '^Тип системы'
-
+    headers_list = [
+        'Изготовитель системы',
+        'Название ОС',
+        'Код продукта',
+        'Тип системы']
+    main_data.append(headers_list)
     for i in range(1, n + 1):
+        os_data_list = []
         with open(f'info_{i}.txt') as f_n:
             for line in f_n:
                 line = line.encode('utf-8').decode('utf-8')
-                if re.match(pattern_1, line):
-                    line = line.split(sep=':')
-                    os_prod_list.append(line[1])
-                    if line[0] in headers_list:
-                        continue
-                    else:
-                        headers_list.append(line[0])
-                elif re.match(pattern_2, line):
-                    line = line.split(sep=':')
-                    os_name_list.append(line[1])
-                    if line[0] in headers_list:
-                        continue
-                    else:
-                        headers_list.append(line[0])
-                elif re.match(pattern_3, line):
-                    line = line.split(sep=':')
-                    os_code_list.append(line[1])
-                    if line[0] in headers_list:
-                        continue
-                    else:
-                        headers_list.append(line[0])
-                elif re.match(pattern_4, line):
-                    line = line.split(sep=':')
-                    os_type_list.append(line[1])
-                    if line[0] in headers_list:
-                        continue
-                    else:
-                        headers_list.append(line[0])
-
-    os_prod_list = [line.strip() for line in os_prod_list]
-    os_name_list = [line.strip() for line in os_name_list]
-    os_code_list = [line.strip() for line in os_code_list]
-    os_type_list = [line.strip() for line in os_type_list]
-    main_data.append(headers_list)
-    j = 0
-    while j < n:
-        os_data_list = []
-        for el in headers_list:
-            if re.match(pattern_1, el):
-                os_data_list.append(os_prod_list[j])
-            elif re.match(pattern_2, el):
-                os_data_list.append(os_name_list[j])
-            elif re.match(pattern_3, el):
-                os_data_list.append(os_code_list[j])
-            elif re.match(pattern_4, el):
-                os_data_list.append(os_type_list[j])
+                for j in range(4):
+                    if re.match(headers_list[j], line):
+                        line = line.split(sep=':')
+                        line_1 = line[1].strip()
+                        os_data_list.insert(j, line_1)
+                        if j == 0:
+                            os_prod_list.append(line_1)
+                            break
+                        elif j == 1:
+                            os_name_list.append(line_1)
+                            break
+                        elif j == 2:
+                            os_code_list.append(line_1)
+                            break
+                        else:
+                            os_type_list.append(line_1)
         main_data.append(os_data_list)
-        j += 1
     return main_data
 
 
