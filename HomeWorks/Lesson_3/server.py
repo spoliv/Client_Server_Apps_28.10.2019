@@ -26,7 +26,7 @@ def start(**kwargs):
         listen_port = kwargs['p']
         if listen_port < 1024 or listen_port > 65535:
             raise ValueError
-    except IndexError:
+    except KeyError:
         print('После параметра -\'p\' необходимо указать номер порта.')
         exit(1)
     except ValueError:
@@ -36,7 +36,7 @@ def start(**kwargs):
 
     try:
         listen_address = kwargs['a']
-    except IndexError:
+    except KeyError:
         print(
             'После параметра \'a\'- необходимо указать адрес, который будет слушать сервер.')
         exit(1)

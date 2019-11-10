@@ -39,7 +39,7 @@ def start(**kwargs):
         server_port = kwargs['port']
         if server_port < 1024 or server_port > 65535:
             raise ValueError
-    except IndexError:
+    except KeyError:
         server_address = DEFAULT_ADDRESS
         server_port = DEFAULT_PORT
     except ValueError:

@@ -12,7 +12,7 @@ def get_message(client):
         else:
             raise ValueError
     else:
-        ValueError
+        raise ValueError
 
 
 def send_message(sock, message):
