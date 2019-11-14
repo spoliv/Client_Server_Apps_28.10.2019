@@ -1,8 +1,12 @@
-DEFAULT_PORT = 9999
+import logging
+
+
+DEFAULT_PORT = 7777
 DEFAULT_ADDRESS = '127.0.0.1'
 MAX_CONNECTED = 8
 MAX_PACKAGE_SIZE = 1024
 ENCODING = 'utf-8'
+LOGGING_LEVEL = logging.DEBUG
 
 # Ключи протокола JIM
 ACTION = 'action'

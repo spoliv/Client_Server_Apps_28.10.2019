@@ -1,5 +1,6 @@
-from HomeWorks.Lesson_3.common.constants import*
 import json
+from HomeWorks.Lesson_4.common.constants import*
+from HomeWorks.Lesson_4.errors import IncorrectDataRecivedError, NonDictInputError
 
 
 def get_message(client):
@@ -10,12 +11,14 @@ def get_message(client):
         if isinstance(response, dict):
             return response
         else:
-            raise ValueError
+            raise IncorrectDataRecivedError
     else:
-        raise ValueError
+        raise IncorrectDataRecivedError
 
 
 def send_message(sock, message):
+    if not isinstance(message, dict):
+        raise NonDictInputError
     json_message = json.dumps(message)
     encoded_message = json_message.encode(ENCODING)
     sock.send(encoded_message)
