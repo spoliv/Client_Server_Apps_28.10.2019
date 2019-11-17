@@ -7,13 +7,15 @@ import logging
 import HomeWorks.Lesson_4.logs.config_client_log
 from HomeWorks.Lesson_4.errors import *
 from HomeWorks.Lesson_4.common.functions import *
+from HomeWorks.Lesson_4.decorators import log
 
 client_logger = logging.getLogger('client')
 
 
-""" Формирование сообщения о присутствии """
+# Формирование сообщения о присутствии
 
 
+@log
 def show_presence(account_name='Guest'):
     out = {
         ACTION: PRESENCE,
@@ -27,9 +29,10 @@ def show_presence(account_name='Guest'):
     return out
 
 
-""" Обработка ответа сервера """
+# Обработка ответа сервера
 
 
+@log
 def proc_answer(message):
     client_logger.debug(f'Разбор сообщения от сервера: {message}')
     if RESPONSE in message:
@@ -40,7 +43,7 @@ def proc_answer(message):
     raise ReqFieldMissingError(RESPONSE)
 
 
-""" Перехват оишибок, выдаваемых click при парсинге командной строки """
+# Перехват оишибок, выдаваемых click при парсинге командной строки
 
 
 def _show_usage_error(self):

@@ -6,14 +6,16 @@ import logging
 import HomeWorks.Lesson_4.logs.config_server_log
 from HomeWorks.Lesson_4.common.functions import *
 from HomeWorks.Lesson_4.errors import IncorrectDataRecivedError
+from HomeWorks.Lesson_4.decorators import log
 
 
 server_logger = logging.getLogger('server')
 
 
-""" Обрабатываем сообщение клиента """
+# Обрабатываем сообщение клиента
 
 
+@log
 def proc_client_message(message):
     server_logger.debug(f'Обработка сообщения от клиента: {message}')
     if ACTION in message and message[ACTION] == PRESENCE and TIME in message and USER in message and \
@@ -26,7 +28,7 @@ def proc_client_message(message):
         }
 
 
-""" Перехват оишибок, выдаваемых click при парсинге командной строки """
+# Перехват оишибок, выдаваемых click при парсинге командной строки
 
 
 def _show_usage_error(self):
