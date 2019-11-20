@@ -1,8 +1,10 @@
 import json
 from HomeWorks.Lesson_4.common.constants import*
 from HomeWorks.Lesson_4.errors import IncorrectDataRecivedError, NonDictInputError
+from HomeWorks.Lesson_4.decorators import log
 
 
+@log
 def get_message(client):
     encoded_response = client.recv(MAX_PACKAGE_SIZE)
     if isinstance(encoded_response, bytes):
@@ -16,6 +18,7 @@ def get_message(client):
         raise IncorrectDataRecivedError
 
 
+@log
 def send_message(sock, message):
     if not isinstance(message, dict):
         raise NonDictInputError
